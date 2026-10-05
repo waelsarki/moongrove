@@ -1,0 +1,5 @@
+MOONGROVE MARKET HUB LTD prototype
+  Customer portal : http://localhost:3000/
+  Admin dashboard : http://localhost:3000/admin.html
+  API base        : http://localhost:3000/api
+  Demo API key    : mg_admin_dev_key

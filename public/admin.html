@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="MOONGROVE administration console — operations, risk, settlement, ledger, reconciliation and compliance." />
+<title>MOONGROVE &middot; Administration Console</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">MG</div>
+      <div>
+        <div class="name">MOONGROVE ADMINISTRATION</div>
+        <div class="sub">Operations, Risk, Settlement &amp; Ledger &middot; plan &sect;12</div>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Admin sections">
+      <button class="active" data-tab="dash">Dashboard</button>
+      <button data-tab="payments">Payments</button>
+      <button data-tab="settle">Settlement</button>
+      <button data-tab="ledger">Ledger</button>
+      <button data-tab="recon">Reconciliation</button>
+      <button data-tab="compliance">Compliance</button>
+      <button data-tab="audit">Audit</button>
+      <button onclick="location.href='/'">&larr; Customer Portal</button>
+    </nav>
+  </header>
+
+  <section id="tab-dash"><div class="card"><h2>Live operations overview</h2><div id="dashBox" class="scroll"></div></div></section>
+  <section id="tab-payments" style="display:none"><div class="card"><h2>All payments</h2><div id="payBox" class="scroll"></div></div></section>
+  <section id="tab-settle" style="display:none">
+    <div class="card"><h2>Settlement instructions</h2><div id="stlBox" class="scroll"></div></div>
+    <div class="card"><h2>Bank performance</h2><div id="bankPerfBox" class="scroll"></div></div>
+    <div class="card"><h2>Bank settlement accounts</h2><div id="bankAcctBox" class="scroll"></div></div>
+  </section>
+  <section id="tab-ledger" style="display:none">
+    <div class="card"><h2>Trial balance (must net to zero per currency)</h2><div id="tbBox" class="scroll"></div></div>
+    <div class="card"><h2>Account balances</h2><div id="balBox" class="scroll"></div></div>
+  </section>
+  <section id="tab-recon" style="display:none">
+    <div class="card"><h2>Reconciliation breaks</h2><div id="breakBox" class="scroll"></div></div>
+    <div class="card"><h2>All 4-way matches</h2><div id="matchBox" class="scroll"></div></div>
+  </section>
+  <section id="tab-compliance" style="display:none">
+    <div class="card"><h2>KYC review queue</h2><div id="queueBox" class="scroll"></div></div>
+    <div class="card"><h2>Customers</h2><div id="custBox" class="scroll"></div></div>
+  </section>
+  <section id="tab-audit" style="display:none"><div class="card"><h2>Immutable audit log</h2><div id="auditBox" class="scroll"></div></div></section>
+
+  <div class="foot">
+    <strong>MOONGROVE MARKET HUB LTD</strong> &middot; administration console prototype.<br/>
+    Prototype environment &middot; simulated bank adapters &middot; not for production use.
+  </div>
+</div>
+<script src="/admin.js"></script>
+</body>
+</html>

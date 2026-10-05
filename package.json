@@ -1,0 +1,17 @@
+{
+  "name": "moongrove",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MOONGROVE cross-border payment & multi-bank settlement platform - prototype",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "seed": "node src/seed.js",
+    "demo": "node scripts/demo-e2e.js",
+    "reset": "node scripts/reset.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}

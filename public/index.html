@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="MOONGROVE Market Hub — send money across borders with live locked FX quotes, transparent fees and settlement you can watch end to end." />
+<title>MOONGROVE &middot; Customer Payment Portal</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">MG</div>
+      <div>
+        <div class="name">MOONGROVE MARKET HUB</div>
+        <div class="sub">International Payment Portal &middot; Customer</div>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Portal sections">
+      <button class="active" data-tab="pay">Send Payment</button>
+      <button data-tab="history">My Payments</button>
+      <button data-tab="quotes">Rates &amp; Currencies</button>
+      <button onclick="location.href='/admin.html'">Admin Console &rarr;</button>
+    </nav>
+  </header>
+
+  <!-- ============ SEND PAYMENT ============ -->
+  <section id="tab-pay">
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Cross-border payments</span>
+        <h1>Financial clarity, from the first quote to settled funds.</h1>
+        <p>Send from Central and West Africa into Nigeria with a live, locked exchange
+           rate, fees you can see line by line, and a settlement trail you can watch
+           end to end — no account required.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b id="statMarkets">5</b><span>Markets</span></div>
+        <div class="stat"><b id="statBanks">9</b><span>Partner banks</span></div>
+        <div class="stat"><b>5 min</b><span>Rate lock</span></div>
+      </div>
+    </div>
+
+    <ol class="progress" aria-label="Checkout progress">
+      <li data-n="1" data-step="1" class="current">Quote</li>
+      <li data-n="2" data-step="2">Method</li>
+      <li data-n="3" data-step="3">Card details</li>
+      <li data-n="4" data-step="4">Receipt</li>
+    </ol>
+
+    <div class="card" id="quoteCard">
+      <div class="card-head">
+        <span class="step-no" aria-hidden="true">1</span>
+        <div>
+          <h2 class="card-title">Where are you paying from?</h2>
+          <div class="hint">Choose your market and amount — the live rate and every fee appear before you commit.</div>
+        </div>
+      </div>
+      <div class="split">
+        <div class="fields">
+          <div class="grid g3">
+            <div>
+              <label for="pMarket">Country</label>
+              <select id="pMarket"></select>
+            </div>
+            <div>
+              <label for="pAmount">Amount to send</label>
+              <input id="pAmount" type="number" value="50000" min="1" inputmode="decimal" />
+            </div>
+            <div>
+              <label for="pTarget">You receive in</label>
+              <select id="pTarget"><option value="NGN">NGN &middot; Nigerian Naira</option></select>
+            </div>
+          </div>
+          <div class="grid g2">
+            <div>
+              <label for="pEmail">Email for receipt <span class="muted">(optional)</span></label>
+              <input id="pEmail" type="email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <div>
+              <label for="pName">Name on card <span class="muted">(optional)</span></label>
+              <input id="pName" placeholder="As printed on your card" autocomplete="cc-name" />
+            </div>
+          </div>
+          <div class="actions">
+            <button class="primary" id="btnQuote">Check exchange rate</button>
+            <span class="muted">The rate is locked for 5 minutes once quoted.</span>
+          </div>
+        </div>
+        <div class="quote-side">
+          <h2>Transfer summary</h2>
+          <div id="quoteBox">
+            <div class="quote-box placeholder">
+              <div class="spread"><strong>Nothing quoted yet</strong></div>
+              <p class="hint">Enter an amount and press <em>Check exchange rate</em> to see the
+                 live rate, every fee, and exactly what lands in NGN.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="methodCard" style="display:none">
+      <div class="card-head">
+        <span class="step-no" aria-hidden="true">2</span>
+        <div>
+          <h2 class="card-title">Payment method</h2>
+          <div class="hint">Pick how you want to pay — the quote above stays locked either way.</div>
+        </div>
+      </div>
+      <div id="methodBox" class="grid g2"></div>
+      <div id="methodNote" class="msg info" style="display:none"></div>
+    </div>
+
+    <div class="card" id="cardFormCard" style="display:none">
+      <div class="card-head">
+        <span class="step-no" aria-hidden="true">3</span>
+        <div>
+          <h2 class="card-title">Card details</h2>
+          <div class="hint">Visa, Mastercard and Verve supported — only the brand, last four
+             digits and authorisation code are ever stored.</div>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div>
+          <label for="cNumber">Card number</label>
+          <input id="cNumber" inputmode="numeric" placeholder="4242 4242 4242 4242" autocomplete="cc-number" maxlength="23" />
+          <div class="hint" id="brandHint" style="margin-top:6px">Visa, Mastercard or Verve</div>
+        </div>
+        <div>
+          <label for="cNameOnCard">Name on card</label>
+          <input id="cNameOnCard" placeholder="AMARA OKONKWO" autocomplete="cc-name" />
+          <div class="grid g2" style="gap:10px">
+            <div><label for="cExp">Expiry</label><input id="cExp" placeholder="MM/YY" maxlength="5" autocomplete="cc-exp" /></div>
+            <div><label for="cCvv">CVV</label><input id="cCvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc" /></div>
+          </div>
+        </div>
+      </div>
+      <div class="test-cards">
+        Test cards: <code>4242 4242 4242 4242</code> (Visa) &middot;
+        <code>5555 5555 5555 4444</code> (Mastercard) &middot;
+        <code>5061 1111 1111 1118</code> (Verve)
+      </div>
+      <div id="payMsg"></div>
+      <div class="actions">
+        <button class="primary" id="btnPay">Pay <span id="payBtnAmount"></span> now</button>
+      </div>
+      <div class="trust">
+        <span>Authorisation simulated in prototype</span>
+        <span>Full card number never stored</span>
+        <span>Locked FX rate for 5 minutes</span>
+      </div>
+    </div>
+
+    <div class="card" id="flowCard" style="display:none">
+      <div class="card-head">
+        <span class="step-no" aria-hidden="true">4</span>
+        <div>
+          <h2 class="card-title">Receipt &amp; settlement trail</h2>
+          <div class="hint">Every lifecycle event is recorded — from authorisation through reconciliation.</div>
+        </div>
+      </div>
+      <div id="receiptBox"></div>
+      <div class="flow" id="flow"></div>
+      <div id="timeline" class="scroll"></div>
+    </div>
+  </section>
+
+  <!-- ============ HISTORY ============ -->
+  <section id="tab-history" style="display:none">
+    <div class="card">
+      <h2>Transaction history</h2>
+      <div id="historyBox" class="scroll"></div>
+    </div>
+  </section>
+
+  <!-- ============ RATES ============ -->
+  <section id="tab-quotes" style="display:none">
+    <div class="card">
+      <h2>Live FX rates</h2>
+      <div class="grid g2" style="margin-bottom:16px">
+        <div><label for="rBase">Base</label><select id="rBase"></select></div>
+        <div><label for="rQuote">Quote</label><select id="rQuote"></select></div>
+      </div>
+      <div id="rateBox"></div>
+    </div>
+    <div class="card">
+      <h2>Supported markets (plan &sect;5)</h2>
+      <div id="marketBox" class="scroll"></div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <strong>MOONGROVE MARKET HUB LTD</strong> &middot; technical prototype of the October 2026 implementation plan.<br/>
+    Prototype environment &middot; simulated bank adapters and FX feed &middot; not for production use.
+  </div>
+</div>
+<script src="/portal.js"></script>
+</body>
+</html>
+
